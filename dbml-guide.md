@@ -38,7 +38,7 @@ db2dbml mysql 'mysql://....:......' -o database.dbml
 
 If running `db2dbml` gives you an error, try these fixes:
 
-### ✅ Option 1: Use `npx`
+### Option 1: Use `npx`
 
 Instead of installing globally, run:
 
