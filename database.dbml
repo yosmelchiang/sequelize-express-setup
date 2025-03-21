@@ -1,0 +1,26 @@
+Table "Events" {
+  "id" int [pk, not null, increment]
+  "description" varchar(255) [not null]
+}
+
+Table "Users" {
+  "id" int [pk, not null, increment]
+  "username" varchar(255) [not null]
+  "password" varchar(255) [not null]
+}
+
+Table "user_events" {
+  "createdAt" datetime [not null]
+  "updatedAt" datetime [not null]
+  "EventId" int [not null]
+  "UserId" int [not null]
+
+  Indexes {
+    UserId [type: btree, name: "UserId"]
+    (EventId, UserId) [pk, name: "PRIMARY"]
+  }
+}
+
+Ref "user_events_ibfk_1":"Events"."id" < "user_events"."EventId" [update: cascade, delete: cascade]
+
+Ref "user_events_ibfk_2":"Users"."id" < "user_events"."UserId" [update: cascade, delete: cascade]
